@@ -1,0 +1,22 @@
+﻿@using Hierarchy.Domain.Entities
+@model HierarchyTableItem
+
+<li>
+    <div class="bg-light text-primary p-1 m-1 border">
+        <button id=@Model.Id type="button" class="btn btn-light add-child"><i class="expand-list bi bi-plus"></i></button>
+        <span id=span-@Model.Id>@Model.Name</span>
+        <div class="dropdown show">
+            <a class="btn btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span><i class="bi bi-list"></i></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                   data-bs-Id=@Model.Id data-bs-op="add" href="#"><i class="bi bi-plus fs-5 me-2"></i>Добавить</a>
+                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                   data-bs-Id=@Model.Id data-bs-op="change" href="#"><i class="bi bi-pencil-square me-2"></i>Редактировать</a>
+                <a class="dropdown-item delete" data-bs-Id=@Model.Id href="#"><i class="bi bi-trash me-2"></i>Удалить</a>
+            </div>
+        </div>
+    </div>
+</li>
+

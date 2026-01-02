@@ -1,0 +1,15 @@
+﻿ul {
+    list-style-type: none; 
+}
+
+#dropdownMenuLink {
+    background-color: white; /* Example: Bleached Almond color */
+}
+
+div .dropdown.show{
+    float: right;
+}
+
+.expand-list{
+    color: grey;
+}

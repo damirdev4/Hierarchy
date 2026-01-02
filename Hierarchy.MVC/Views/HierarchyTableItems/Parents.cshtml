@@ -1,0 +1,64 @@
+﻿@using Hierarchy.Domain.Entities
+
+@model IEnumerable<HierarchyTableItem>
+@{
+    ViewData["Title"] = "Hierarchy Table";
+}
+
+<ul>
+    @foreach (var hierarchyTableItem in Model)
+    {
+        <li>
+            <div class="bg-light text-primary p-1 m-1 border">
+                <button id=@hierarchyTableItem.Id type="button" class="btn btn-light add-child"><i class="expand-list bi bi-plus"></i></button>
+                <span id=span-@hierarchyTableItem.Id>@hierarchyTableItem.Name</span>
+                <div class="dropdown show">
+                    <a class="btn btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bi bi-list"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                           data-bs-Id=@hierarchyTableItem.Id data-bs-op="add" href="#"><i class="bi bi-plus fs-5 me-2"></i>Добавить</a>
+                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                           data-bs-Id=@hierarchyTableItem.Id data-bs-op="change" href="#"><i class="bi bi-pencil-square me-2"></i>Редактировать</a>
+                        <a class="dropdown-item delete" data-bs-Id=@hierarchyTableItem.Id href="#"><i class="bi bi-trash me-2"></i>Удалить</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="modalForm" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="Name" required>
+                        <div class="invalid-feedback">
+                            Заполните Name
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/hierarchyTableItems.js"></script>
+}
+@section Styles {
+    <link href="~/css/hierarchyTableItems.css" rel="stylesheet" />
+}
