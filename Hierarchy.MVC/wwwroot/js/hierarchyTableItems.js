@@ -43,7 +43,6 @@ function addChildItems(event) {
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 if (data.includes("li")) {
-                    console.log("((((((((")
                     icon.classList.remove("bi-plus");
                     icon.classList.add("bi-dash");
                     parentNode.innerHTML += data;
@@ -69,7 +68,7 @@ function removeItem(event) {
     const ul = li.closest("ul");
     const icon = ul.closest("li").querySelector("i");
 
-    if (ul.querySelectorAll('li').length == 1) {
+    if (ul.querySelectorAll(':scope > li').length == 1) {
         icon.classList.remove("bi-dash");
         icon.classList.add("bi-plus");
     }
@@ -166,8 +165,8 @@ modalSaveButton.onclick = function (event) {
                                 ul.innerHTML += html;
 
                                 if (icon.classList.contains("bi-plus")) {
-                                    icon.classList.remove("bi-dash");
-                                    icon.classList.add("bi-plus");
+                                    icon.classList.add("bi-dash");
+                                    icon.classList.remove("bi-plus");
                                     ul.hidden = false;
                                 }
                             }
